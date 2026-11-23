@@ -10,8 +10,11 @@ test('起動すると日本語のホームが表示され、安全なpreloadでp
     await expect(page.evaluate(() => window.api.ping())).resolves.toBe('pong')
     expect(await page.evaluate(() => Object.keys(window.api).sort())).toEqual([
       'cancelClose',
+      'characters',
       'finishClose',
+      'fixedPrompt',
       'onBeforeClose',
+      'phrases',
       'ping',
       'settings',
     ])

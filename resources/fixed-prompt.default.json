@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "current": 1,
+  "versions": [
+    {
+      "version": 1,
+      "note": "初版（設計書5.2の案）",
+      "createdAt": "2026-11-23T00:00:00.000Z",
+      "blocks": [
+        {
+          "id": "F1",
+          "title": "素材の役割",
+          "text": {
+            "en": "Use the provided 3D character image as the primary reference for the character's face, body proportions, and outfit. Use the reference video only as a guide for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers.",
+            "ja": "3Dキャラ画像を、顔・体の比率・服装の主な参照にする。参照動画は、姿勢・歩き方・体の動き・重心移動と、頭・腕・手首・指の動きの参考にだけ使う。"
+          }
+        },
+        {
+          "id": "F2",
+          "title": "ぼかし",
+          "text": {
+            "en": "The face in the reference video is intentionally blurred for privacy. Do not reproduce the blur, smudging, or any distortion on the character's face; render a clear, detailed face that matches the character image.",
+            "ja": "参照動画の顔はプライバシーのため意図的にぼかしている。ぼかしやにじみ、歪みをキャラの顔に再現しない。キャラ画像と同じ、はっきりした顔を描く。"
+          }
+        },
+        {
+          "id": "F3",
+          "title": "外見の維持",
+          "text": {
+            "en": "Keep the character consistent throughout: a semi-realistic 3D doll (about 65% realistic and 35% collectible figure) with the same facial features, natural double eyelids, short dark hair, and a stable head-to-body ratio and body proportions.",
+            "ja": "最初から最後まで同じキャラを保つ。実写65％・フィギュア35％程度のセミリアル3Dドールで、同じ顔立ち、自然な二重まぶた、短い暗色の髪、安定した頭身と体の比率。"
+          }
+        },
+        {
+          "id": "F4",
+          "title": "人体",
+          "text": {
+            "en": "Maintain natural human anatomy: exactly five fingers on each hand, no extra or missing fingers, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit.",
+            "ja": "自然な人体構造を保つ。各手の指は5本ちょうど。指の過不足、手足の変形、不自然な関節、顔や服装の突然の変化を起こさない。"
+          }
+        },
+        {
+          "id": "F5",
+          "title": "避けること",
+          "text": {
+            "en": "Avoid unnecessary lip movement or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements.",
+            "ja": "不要な口パクや発話、大げさな笑顔、不自然なまばたき、カメラの急な動きを避ける。"
+          }
+        }
+      ]
+    }
+  ]
+}

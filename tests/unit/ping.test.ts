@@ -41,8 +41,11 @@ it('公開APIからmainへpingを送りpongを受け取り、余分な入力は�
 
   expect(Object.keys(api).sort()).toEqual([
     'cancelClose',
+    'characters',
     'finishClose',
+    'fixedPrompt',
     'onBeforeClose',
+    'phrases',
     'ping',
     'settings',
   ])

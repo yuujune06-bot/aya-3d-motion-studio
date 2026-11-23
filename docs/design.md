@@ -266,7 +266,7 @@ interface VideoAsset {
 | 照明 | 自然光 | Soft natural daylight. | やわらかい自然光。 |
 | 画角 | 全身・縦長 | Vertical 9:16 framing with the character's full body in view. | 縦長の9:16で、キャラの全身が画面に入る。 |
 
-初期辞書は各分類5〜10個、合計およそ80個をClaudeが作って `resources/phrases.default.json` として置く。利用者は画面から追加・編集・非表示にできる（同梱分は削除できず、非表示だけ）。
+初期辞書は各分類3〜12個、合計82個（2026-11-23 作成済み）をClaudeが作って `resources/phrases.default.json` として置く。利用者は画面から追加・編集・非表示にできる（同梱分は削除できず、非表示だけ）。
 
 ### 5.4 海辺の実例（完成プロンプト）
 

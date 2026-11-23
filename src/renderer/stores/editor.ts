@@ -10,12 +10,22 @@ class RequestError extends Error {
     super(message)
   }
 }
-async function unwrap<T>(response: Promise<ApiResult<T>>): Promise<T> {
+export async function unwrap<T>(response: Promise<ApiResult<T>>): Promise<T> {
   const result = await response
   if (!result.ok) throw new RequestError(result.code, result.detail)
   return result.data
 }
-type Screen = 'home' | 'settings'
+type Screen = 'home' | 'characters' | 'prompts' | 'settings'
+const pending = new Set<() => Promise<void>>()
+export function registerSave(flush: () => Promise<void>): () => void {
+  pending.add(flush)
+  return () => {
+    pending.delete(flush)
+  }
+}
+async function flushEdits(): Promise<void> {
+  await Promise.all([...pending].map((flush) => flush()))
+}
 
 export interface EditorState {
   screen: Screen
@@ -25,7 +35,8 @@ export interface EditorState {
   closeConfirmation: boolean
   error: { code: ErrorCode; detail: string } | null
   init: () => Promise<void>
-  navigate: (screen: Screen) => void
+  navigate: (screen: Screen) => Promise<void>
+  run: (operation: () => Promise<void>) => Promise<void>
   changeRoot: () => Promise<void>
   openRoot: () => Promise<void>
   close: () => Promise<void>
@@ -63,7 +74,12 @@ export function createEditorStore(api: AppApi) {
       closeConfirmation: false,
       error: null,
       init: () => run(async () => set({ settings: await unwrap(api.settings.get()) })),
-      navigate: (screen) => set({ screen }),
+      run,
+      navigate: (screen) =>
+        run(async () => {
+          await flushEdits()
+          set({ screen })
+        }),
       changeRoot: () =>
         run(async () => {
           const settings = await unwrap(api.settings.selectRoot())
@@ -77,6 +93,7 @@ export function createEditorStore(api: AppApi) {
         if (get().closing) return
         set({ closing: true })
         try {
+          await flushEdits()
           await unwrap(api.finishClose())
         } catch (error) {
           report(error)
@@ -90,6 +107,7 @@ export function createEditorStore(api: AppApi) {
       },
       retryClose: async () => {
         try {
+          await flushEdits()
           await unwrap(api.finishClose())
           set({ closeConfirmation: false })
         } catch (error) {

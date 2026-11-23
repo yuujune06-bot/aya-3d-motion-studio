@@ -7,7 +7,10 @@ export const imageFormats: Record<string, string> = {
   '.jpeg': 'jpeg',
   '.webp': 'webp',
 }
-export async function validateImage(bytes: Buffer, extension: string): Promise<void> {
+export async function validateImage(
+  bytes: Buffer,
+  extension: string,
+): Promise<{ width: number; height: number }> {
   try {
     const image = sharp(bytes, { failOn: 'warning', limitInputPixels: 40_000_000 })
     const metadata = await image.metadata()
@@ -19,6 +22,7 @@ export async function validateImage(bytes: Buffer, extension: string): Promise<v
     )
       throw new Error('format')
     await image.raw().toBuffer()
+    return { width: metadata.width, height: metadata.height }
   } catch (error) {
     throw new AppError('IMAGE_INVALID', { cause: error })
   }
