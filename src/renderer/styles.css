@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+@source './';
+
+:root {
+  --background: oklch(0.985 0.003 90);
+  --foreground: oklch(0.24 0.015 280);
+  --primary: oklch(0.5 0.16 290);
+  --primary-foreground: oklch(0.99 0 0);
+  --border: oklch(0.91 0.008 280);
+  --ring: oklch(0.6 0.15 290);
+}
+
+@theme inline {
+  --font-sans: 'Yu Gothic UI', 'Meiryo', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply m-0 bg-background font-sans text-foreground antialiased;
+  }
+}

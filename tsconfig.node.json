@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": { "composite": true, "types": ["node"] },
+  "include": [
+    "*.config.ts",
+    "*.config.mts",
+    "src/main/**/*.ts",
+    "src/preload/**/*.ts",
+    "src/shared/**/*.ts",
+    "src/renderer/stores/**/*.ts",
+    "tests/**/*.ts",
+    "src/renderer/env.d.ts"
+  ]
+}

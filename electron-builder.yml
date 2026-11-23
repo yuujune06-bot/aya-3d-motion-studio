@@ -1,0 +1,16 @@
+appId: com.aya.reeleditor
+productName: AYA Reel Editor
+directories:
+  output: dist
+files:
+  - out/**/*
+  - package.json
+extraResources:
+  - from: resources/fonts
+    to: fonts
+win:
+  target: nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
