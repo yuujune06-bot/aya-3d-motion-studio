@@ -1,12 +1,8 @@
 import { BrowserWindow, dialog, ipcMain, shell } from 'electron'
 import { z } from 'zod'
 import { AppError, type ApiResult } from '../../shared/errors'
-import { idSchema, projectSchema, titleSchema } from '../../shared/schema/project'
 import { OperationQueue } from '../services/OperationQueue'
-import { ProjectService } from '../services/ProjectService'
 import type { SettingsService } from '../services/SettingsService'
-import { readScriptFile } from '../services/ScriptService'
-import { registerLibraryHandlers } from './library'
 
 export function registerStorageHandlers(settings: SettingsService): {
   authorizeClose: (window: BrowserWindow) => void
@@ -18,7 +14,6 @@ export function registerStorageHandlers(settings: SettingsService): {
     clearTimeout(deadlines.get(window))
     deadlines.delete(window)
   }
-  const projects = (): ProjectService => new ProjectService(settings.data)
 
   function handle<T extends unknown[], R>(
     channel: string,
@@ -51,30 +46,6 @@ export function registerStorageHandlers(settings: SettingsService): {
       }
     })
   }
-  registerLibraryHandlers(handle, settings)
-  handle('project:list', z.tuple([]), async () => projects().list())
-  handle('project:read-script', z.tuple([]), async (window) => {
-    const selection = await dialog.showOpenDialog(window, {
-      title: '台本を読み込む',
-      filters: [{ name: '台本（UTF-8）', extensions: ['txt', 'md'] }],
-      properties: ['openFile'],
-    })
-    if (selection.canceled || !selection.filePaths[0]) return null
-    return readScriptFile(selection.filePaths[0])
-  })
-  handle('project:create', z.tuple([titleSchema]), async (_window, title) =>
-    projects().create(title),
-  )
-  handle('project:get', z.tuple([idSchema]), async (_window, id) => projects().get(id))
-  handle('project:save', z.tuple([projectSchema]), async (_window, project) =>
-    projects().save(project),
-  )
-  handle('project:rename', z.tuple([idSchema, titleSchema]), async (_window, id, title) =>
-    projects().rename(id, title),
-  )
-  handle('project:duplicate', z.tuple([idSchema]), async (_window, id) => projects().duplicate(id))
-  handle('project:trash', z.tuple([idSchema]), async (_window, id) => projects().moveToTrash(id))
-  handle('project:restore', z.tuple([idSchema]), async (_window, id) => projects().restore(id))
   handle('settings:get', z.tuple([]), async () => settings.getInfo())
   handle('settings:select-root', z.tuple([]), async (window) => {
     const selection = await dialog.showOpenDialog(window, {

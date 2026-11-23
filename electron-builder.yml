@@ -1,13 +1,10 @@
-appId: com.aya.reeleditor
-productName: AYA Reel Editor
+appId: com.aya.motionstudio
+productName: AYA 3D Motion Studio
 directories:
   output: dist
 files:
   - out/**/*
   - package.json
-extraResources:
-  - from: resources/fonts
-    to: fonts
 win:
   target: nsis
 nsis:

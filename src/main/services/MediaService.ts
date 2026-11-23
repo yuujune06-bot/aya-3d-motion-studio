@@ -3,7 +3,7 @@ import path from 'node:path'
 import sharp from 'sharp'
 import { AppError } from '../../shared/errors'
 import type { StorageService } from './StorageService'
-import { imageFormats, validateImage } from './ReferenceService'
+import { imageFormats, validateImage } from './ImageValidation'
 
 export async function readMedia(
   storage: StorageService,

@@ -16,14 +16,14 @@ npm run dev
 
 ## コマンド
 
-| コマンド | 内容 |
-| --- | --- |
-| `npm run dev` | 開発用ウィンドウを開く |
-| `npm run build` | 型チェックとビルド |
-| `npm run lint` | ESLintとPrettierの検査 |
-| `npm run typecheck` | TypeScriptの型チェック |
-| `npm run test` | 単体テスト |
-| `npm run test:e2e` | ビルド後、Electronを起動して画面を確認（Windowsのデスクトップで実行） |
+| コマンド            | 内容                                                                  |
+| ------------------- | --------------------------------------------------------------------- |
+| `npm run dev`       | 開発用ウィンドウを開く                                                |
+| `npm run build`     | 型チェックとビルド                                                    |
+| `npm run lint`      | ESLintとPrettierの検査                                                |
+| `npm run typecheck` | TypeScriptの型チェック                                                |
+| `npm run test`      | 単体テスト                                                            |
+| `npm run test:e2e`  | ビルド後、Electronを起動して画面を確認（Windowsのデスクトップで実行） |
 
 ## データの保存場所
 
