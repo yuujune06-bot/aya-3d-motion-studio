@@ -16,7 +16,7 @@ function createWindow(authorizeClose: (window: BrowserWindow) => void): void {
     height: 760,
     minWidth: 640,
     minHeight: 480,
-    title: 'AYA Reel Editor',
+    title: 'AYA 3D Motion Studio',
     show: false,
     autoHideMenuBar: true,
     webPreferences: {
@@ -43,7 +43,7 @@ const testRoot =
   !app.isPackaged && process.env.NODE_ENV === 'test' ? process.env.AYA_TEST_ROOT : undefined
 app.setPath(
   'userData',
-  testRoot ? join(testRoot, 'config') : join(app.getPath('appData'), 'AYA Reel Editor'),
+  testRoot ? join(testRoot, 'config') : join(app.getPath('appData'), 'AYA 3D Motion Studio'),
 )
 
 void app
@@ -51,7 +51,7 @@ void app
   .then(async () => {
     const settings = await SettingsService.open(
       app.getPath('userData'),
-      testRoot ? join(testRoot, 'data') : join(app.getPath('home'), 'AYA Reel Editor'),
+      testRoot ? join(testRoot, 'data') : join(app.getPath('home'), 'AYA 3D Motion Studio'),
     )
     protocol.handle('aya-media', async (request) => {
       try {

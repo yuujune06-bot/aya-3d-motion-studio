@@ -3,8 +3,6 @@ import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 import { StorageService } from '../../src/main/services/StorageService'
-import { ProjectService } from '../../src/main/services/ProjectService'
-import { newProject, projectSchema } from '../../src/shared/schema/project'
 
 let scratch: string
 let storage: StorageService
@@ -179,34 +177,32 @@ describe('U-02 パス境界', () => {
   })
 })
 describe('U-03 移行の仕組み', () => {
+  const v0Schema = z.object({ schemaVersion: z.literal(0), name: z.string() }).strict()
+  const v1Schema = z.object({ schemaVersion: z.literal(1), title: z.string() }).strict()
+  const migrate = (raw: unknown): unknown => {
+    const old = v0Schema.safeParse(raw)
+    return old.success ? { schemaVersion: 1, title: old.data.name } : raw
+  }
+
   it('v0フィクスチャをv1へ移行し、原本はその後の保存でも残る', async () => {
-    await storage.ensureDirectory('projects')
-    const raw = JSON.parse(
-      await fs.readFile(path.resolve('tests/fixtures/project-v0.json'), 'utf8'),
-    ) as Record<string, unknown>
-    const id = String(raw.id)
-    const file = `projects/${id}/project.json`
-    await storage.writeJsonAtomic(file, raw)
+    const file = 'migration.json'
+    await storage.writeJsonAtomic(file, { schemaVersion: 0, name: '移行前の名前' })
     const original = await fs.readFile(await storage.resolveInRoot(file))
-    const projects = new ProjectService(storage)
-    const migrated = await projects.get(id)
-    expect(migrated.schemaVersion).toBe(1)
-    expect(migrated.title).toBe('移行前のリール')
-    expect(migrated).toEqual(newProject(id, '移行前のリール', '2026-01-01T00:00:00.000Z'))
-    await projects.rename(id, '移行後に編集')
+
+    const migrated = await storage.readJson(file, v1Schema, migrate)
+    expect(migrated).toEqual({ schemaVersion: 1, title: '移行前の名前' })
+    expect(await storage.readJson(file, v1Schema)).toEqual(migrated)
     expect(await fs.readFile(await storage.resolveInRoot(file + '.v0.bak'))).toEqual(original)
-    expect((await storage.readJson(file, projectSchema)).title).toBe('移行後に編集')
+
+    await storage.writeJsonAtomic(file, { ...migrated, title: '移行後に編集' })
+    expect(await fs.readFile(await storage.resolveInRoot(file + '.v0.bak'))).toEqual(original)
+    expect((await storage.readJson(file, v1Schema)).title).toBe('移行後に編集')
   })
   it('未知の将来バージョンは書き換えない', async () => {
-    await storage.ensureDirectory('projects')
-    const id = '01ARZ3NDEKTSV4RRFFQ69G5FAV'
-    const file = `projects/${id}/project.json`
-    await storage.writeJsonAtomic(file, {
-      ...newProject(id, '将来形式', '2026-01-01T00:00:00.000Z'),
-      schemaVersion: 2,
-    })
+    const file = 'migration.json'
+    await storage.writeJsonAtomic(file, { schemaVersion: 2, title: '将来形式' })
     const original = await fs.readFile(await storage.resolveInRoot(file))
-    await expect(new ProjectService(storage).get(id)).rejects.toMatchObject({
+    await expect(storage.readJson(file, v1Schema, migrate)).rejects.toMatchObject({
       code: 'INVALID_JSON',
     })
     expect(await fs.readFile(await storage.resolveInRoot(file))).toEqual(original)

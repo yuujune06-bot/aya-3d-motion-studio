@@ -13,26 +13,19 @@ export function Settings({ state }: { state: EditorState }): React.JSX.Element {
       )}
       <h3 className="font-semibold">データの保存先</h3>
       <p className="my-4 break-all rounded border bg-white p-4">
-        {state.settings?.dataRoot ?? '読み込み中…'}
-      </p>
-      <p className="mb-5 text-sm leading-7">
-        保存先を変更しても、今あるリールは移動しません。新しい場所で始めるか、元の保存先を選び直すと、その場所のリールが表示されます。
+        {state.settings?.dataRoot ?? (state.busy ? '読み込み中…' : '保存先を取得できませんでした')}
       </p>
       <div className="flex gap-5">
         <Button
           disabled={state.busy || state.closing || !state.settings}
-          onClick={() => {
-            if (
-              window.confirm(
-                '保存先を変更します。既存のリールは移動しません。新しい場所で始めますか？',
-              )
-            )
-              void state.changeRoot()
-          }}
+          onClick={() => void state.changeRoot()}
         >
-          新しい場所で始める
+          保存先を変更
         </Button>
-        <button disabled={state.busy || !state.settings} onClick={() => void state.openRoot()}>
+        <button
+          disabled={state.busy || state.closing || !state.settings}
+          onClick={() => void state.openRoot()}
+        >
           フォルダーを開く
         </button>
       </div>

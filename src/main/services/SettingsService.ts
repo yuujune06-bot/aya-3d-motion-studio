@@ -15,12 +15,6 @@ export class SettingsService {
 
   static async open(configRoot: string, defaultRoot: string): Promise<SettingsService> {
     const config = await StorageService.open(configRoot)
-    const defaults = (): Settings =>
-      settingsSchema.parse({
-        schemaVersion: 1,
-        dataRoot: defaultRoot,
-        defaults: { charsPerSec: 6, minSceneSec: 2, maxSceneSec: 15, maxReelSec: 180 },
-      })
     const load = async (file: string): Promise<Settings> => {
       const value = await config.readJson(file, settingsSchema)
       if (!path.isAbsolute(value.dataRoot)) throw new AppError('INVALID_JSON')
@@ -39,7 +33,7 @@ export class SettingsService {
         settings = await load('settings.json.bak')
       } catch {
         resetToDefaults = hadSettings || (await config.exists('settings.json.bak'))
-        settings = defaults()
+        settings = settingsSchema.parse({ schemaVersion: 1, dataRoot: defaultRoot })
       }
     }
     const data = await StorageService.open(settings.dataRoot)
@@ -49,7 +43,6 @@ export class SettingsService {
     return new SettingsService(config, { ...settings, dataRoot: data.root }, data, resetToDefaults)
   }
   private static async prepare(data: StorageService): Promise<void> {
-    await data.ensureDirectory('projects')
     await data.ensureDirectory('trash')
   }
   get(): Settings {

@@ -42,10 +42,8 @@ it('公開APIからmainへpingを送りpongを受け取り、余分な入力は�
   expect(Object.keys(api).sort()).toEqual([
     'cancelClose',
     'finishClose',
-    'library',
     'onBeforeClose',
     'ping',
-    'projects',
     'settings',
   ])
   await expect(api.ping()).resolves.toBe('pong')

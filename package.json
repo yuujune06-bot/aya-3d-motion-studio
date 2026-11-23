@@ -1,8 +1,8 @@
 {
-  "name": "aya-reel-editor",
+  "name": "aya-3d-motion-studio",
   "version": "0.0.0",
   "private": true,
-  "description": "台本からリールを作るWindowsローカルアプリ",
+  "description": "Klingで3Dキャラ動画を作るための制作支援アプリ",
   "author": "AYA",
   "license": "UNLICENSED",
   "main": "out/main/index.js",
