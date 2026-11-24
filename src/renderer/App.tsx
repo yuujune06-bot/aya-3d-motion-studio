@@ -4,6 +4,15 @@ import { createEditorStore } from './stores/editor'
 import { Home } from './pages/Home'
 import { Settings } from './pages/Settings'
 import { errorMessages } from '../shared/errors'
+import { Characters } from './pages/Characters'
+import { Prompts } from './pages/Prompts'
+
+const screens = [
+  ['home', 'ホーム'],
+  ['characters', 'キャラ'],
+  ['prompts', 'プロンプト'],
+  ['settings', '設定'],
+] as const
 
 const editor = createEditorStore(window.api)
 export function App(): React.JSX.Element {
@@ -19,20 +28,17 @@ export function App(): React.JSX.Element {
       <header className="flex items-center justify-between border-b px-8 py-5">
         <h1 className="text-lg font-semibold">AYA 3D Motion Studio</h1>
         <nav className="flex gap-5" aria-label="画面">
-          <button
-            disabled={state.busy || state.closing}
-            aria-current={state.screen === 'home' ? 'page' : undefined}
-            onClick={() => state.navigate('home')}
-          >
-            ホーム
-          </button>
-          <button
-            disabled={state.busy || state.closing}
-            aria-current={state.screen === 'settings' ? 'page' : undefined}
-            onClick={() => state.navigate('settings')}
-          >
-            設定
-          </button>
+          {screens.map(([screen, label]) => (
+            <button
+              key={screen}
+              disabled={state.busy || state.closing}
+              className="aria-[current=page]:font-bold aria-[current=page]:underline"
+              aria-current={state.screen === screen ? 'page' : undefined}
+              onClick={() => void state.navigate(screen)}
+            >
+              {label}
+            </button>
+          ))}
         </nav>
       </header>
       {state.settings?.resetToDefaults && (
@@ -69,6 +75,8 @@ export function App(): React.JSX.Element {
         </div>
       )}
       {state.screen === 'home' && <Home state={state} />}
+      {state.screen === 'characters' && <Characters state={state} />}
+      {state.screen === 'prompts' && <Prompts state={state} />}
       {state.screen === 'settings' && <Settings state={state} />}
       <footer role="status" className="mt-auto border-t px-8 py-3 text-sm text-gray-600">
         {state.busy ? '処理中…' : state.settings ? '準備完了' : '設定を利用できません'}

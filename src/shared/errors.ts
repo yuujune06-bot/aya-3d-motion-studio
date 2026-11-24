@@ -1,4 +1,5 @@
 export const errorMessages = {
+  CHARACTER_LOCKED: 'キャラは固定中です。固定を解除してください。',
   IMAGE_INVALID: '画像を読み込めませんでした。正常なPNG・JPG・WEBP画像を選び直してください。',
   INVALID_INPUT: '入力を確認できませんでした。入力内容を見直してください。',
   UNSAFE_PATH: '安全に扱えない保存場所です。別のフォルダーを選んでください。',

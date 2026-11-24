@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "current": 1,
+  "versions": [
+    {
+      "version": 1,
+      "note": "初版（設計書5.2の案）",
+      "createdAt": "2026-11-23T00:00:00.000Z",
+      "blocks": [
+        {
+          "id": "F1",
+          "title": "素材の役割",
+          "text": {
+            "en": "Use the 3D character image as the main reference for the face, body proportions, and outfit. Use the reference video only for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers.",
+            "ja": "3Dキャラ画像を、顔・体の比率・服装の主な参照にする。参照動画は、姿勢・歩き方・体の動き・重心移動と、頭・腕・手首・指の動きの参考にだけ使う。"
+          }
+        },
+        {
+          "id": "F2",
+          "title": "ぼかし",
+          "text": {
+            "en": "The face in the reference video is blurred for privacy; do not reproduce the blur on the character's face. Render a clear face that matches the character image.",
+            "ja": "参照動画の顔はプライバシーのためぼかしている。ぼかしをキャラの顔に再現しない。キャラ画像と同じ、はっきりした顔を描く。"
+          }
+        },
+        {
+          "id": "F3",
+          "title": "外見の維持",
+          "text": {
+            "en": "Keep every character consistent with the character image: the same face, hairstyle, hair color, skin tone, and body proportions.",
+            "ja": "どのキャラもキャラ画像と同じ見た目を保つ。顔、髪型、髪の色、肌の色、体の比率を変えない。"
+          }
+        },
+        {
+          "id": "F4",
+          "title": "人体",
+          "text": {
+            "en": "Maintain natural anatomy: exactly five fingers on each hand, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit.",
+            "ja": "自然な人体を保つ。各手の指は5本ちょうど。手足の変形や不自然な関節、顔や服装の突然の変化を起こさない。"
+          }
+        },
+        {
+          "id": "F5",
+          "title": "避けること",
+          "text": {
+            "en": "Avoid lip-syncing or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements.",
+            "ja": "口パクや発話、大げさな笑顔、不自然なまばたき、カメラの急な動きを避ける。"
+          }
+        }
+      ]
+    }
+  ]
+}

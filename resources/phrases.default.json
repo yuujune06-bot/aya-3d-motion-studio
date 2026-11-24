@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "phrases": [
+    {
+      "id": "motion.walk-follow",
+      "category": "motion",
+      "label": "参照どおりに歩く",
+      "text": {
+        "en": "Walk naturally, closely following the reference video's footsteps, stride, and pace.",
+        "ja": "参照動画の足運び・歩幅・速さに忠実に、自然に歩く。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.walk-ledge",
+      "category": "motion",
+      "label": "縁を歩く",
+      "text": {
+        "en": "Walk carefully along a narrow ledge, closely following the reference video's footsteps, balance, and weight shifts.",
+        "ja": "参照動画の足運び・バランス・重心移動に忠実に、狭い縁の上を慎重に歩く。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.toddle",
+      "category": "motion",
+      "label": "よちよち歩く",
+      "text": {
+        "en": "Toddle forward with short, slightly unsteady steps, as in the reference video.",
+        "ja": "参照動画のように、小さく少しおぼつかない足取りで前へ歩く。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.run",
+      "category": "motion",
+      "label": "走る",
+      "text": {
+        "en": "Run forward with natural arm swings, following the reference video's rhythm and posture.",
+        "ja": "参照動画のリズムと姿勢に合わせ、自然に腕を振って前へ走る。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.stand-still",
+      "category": "motion",
+      "label": "立ち止まる",
+      "text": {
+        "en": "Stand still with a relaxed, balanced posture, with only small natural body movements.",
+        "ja": "力の抜けた安定した姿勢で立ち止まり、体は小さく自然に動く程度。"
+      }
+    },
+    {
+      "id": "motion.squat",
+      "category": "motion",
+      "label": "しゃがむ",
+      "text": {
+        "en": "Squat down slowly and keep balance, following the reference video's timing and weight shift.",
+        "ja": "参照動画のタイミングと重心移動に合わせて、ゆっくりしゃがみ、バランスを保つ。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.sit",
+      "category": "motion",
+      "label": "座っている",
+      "text": {
+        "en": "Sit naturally, with posture and small body movements matching the reference video.",
+        "ja": "参照動画と同じ姿勢と小さな体の動きで、自然に座っている。"
+      }
+    },
+    {
+      "id": "motion.jump",
+      "category": "motion",
+      "label": "ジャンプする",
+      "text": {
+        "en": "Jump lightly in place, with a natural crouch before the jump and a soft landing.",
+        "ja": "その場で軽くジャンプする。跳ぶ前に自然にかがみ、やわらかく着地する。"
+      },
+      "tags": ["needs-full-body"]
+    },
+    {
+      "id": "motion.turn",
+      "category": "motion",
+      "label": "振り返る",
+      "text": {
+        "en": "Turn around slowly, following the reference video's body rotation and foot placement.",
+        "ja": "参照動画の体の回転と足の置き方に合わせて、ゆっくり振り返る。"
+      }
+    },
+    {
+      "id": "motion.hold-hands-adult",
+      "category": "motion",
+      "label": "大人と手をつなぐ",
+      "text": {
+        "en": "Hold hands with an adult on the right side of the frame.",
+        "ja": "画面右側の大人と手をつなぐ。"
+      },
+      "tags": ["contact"]
+    },
+    {
+      "id": "motion.hold-hands-adult-left",
+      "category": "motion",
+      "label": "大人と手をつなぐ（左側）",
+      "text": {
+        "en": "Hold hands with an adult on the left side of the frame.",
+        "ja": "画面左側の大人と手をつなぐ。"
+      },
+      "tags": ["contact"]
+    },
+    {
+      "id": "motion.reach-out",
+      "category": "motion",
+      "label": "手を伸ばす",
+      "text": {
+        "en": "Reach out with one arm toward something in front, following the reference video's arm movement.",
+        "ja": "参照動画の腕の動きに合わせて、前にある物へ片腕を伸ばす。"
+      }
+    },
+
+    {
+      "id": "hands.free-hand-fingers",
+      "category": "hands",
+      "label": "空いた手の細かい指の動き",
+      "text": {
+        "en": "With the free hand, reproduce the delicate finger movements, finger bending, and wrist rotation from the reference video as faithfully as possible.",
+        "ja": "つないでいない方の手で、参照動画の繊細な指の動き、指の曲げ方、手首の回転をできる限り忠実に再現する。"
+      }
+    },
+    {
+      "id": "hands.fingers-faithful",
+      "category": "hands",
+      "label": "指の動きを忠実に",
+      "text": {
+        "en": "Reproduce the finger movements and finger bending from the reference video as faithfully as possible.",
+        "ja": "参照動画の指の動きと曲げ方を、できる限り忠実に再現する。"
+      }
+    },
+    {
+      "id": "hands.wrist-rotation",
+      "category": "hands",
+      "label": "手首の回転",
+      "text": {
+        "en": "Follow the reference video's wrist rotation closely.",
+        "ja": "参照動画の手首の回転に忠実に合わせる。"
+      }
+    },
+    {
+      "id": "hands.pinch",
+      "category": "hands",
+      "label": "指でつまむ",
+      "text": {
+        "en": "Pinch a small object between the thumb and index finger with natural finger joints.",
+        "ja": "自然な指の関節で、親指と人差し指の間に小さな物をつまむ。"
+      }
+    },
+    {
+      "id": "hands.point",
+      "category": "hands",
+      "label": "指さす",
+      "text": {
+        "en": "Point at something with the index finger extended and the other fingers naturally curled.",
+        "ja": "人差し指を伸ばし、ほかの指は自然に曲げて、何かを指さす。"
+      }
+    },
+    {
+      "id": "hands.wave",
+      "category": "hands",
+      "label": "手を振る",
+      "text": { "en": "Wave one hand gently from the wrist.", "ja": "手首から片手をやさしく振る。" }
+    },
+    {
+      "id": "hands.clap",
+      "category": "hands",
+      "label": "拍手する",
+      "text": { "en": "Clap both hands softly a few times.", "ja": "両手で軽く数回拍手する。" }
+    },
+    {
+      "id": "hands.touch-object",
+      "category": "hands",
+      "label": "物をさわる",
+      "text": {
+        "en": "Touch the object gently with the fingertips, keeping all five fingers natural.",
+        "ja": "5本の指を自然に保ったまま、指先で物にそっと触れる。"
+      }
+    },
+
+    {
+      "id": "expression.subtle-smile",
+      "category": "expression",
+      "label": "控えめな微笑み",
+      "text": {
+        "en": "A soft, subtle smile; do not laugh or grin widely.",
+        "ja": "やわらかく控えめな微笑み。声を出して笑ったり、大きく笑ったりしない。"
+      }
+    },
+    {
+      "id": "expression.happy",
+      "category": "expression",
+      "label": "うれしそう",
+      "text": {
+        "en": "A happy, bright expression with a natural smile.",
+        "ja": "自然な笑顔の、うれしそうな明るい表情。"
+      }
+    },
+    {
+      "id": "expression.neutral",
+      "category": "expression",
+      "label": "無表情",
+      "text": {
+        "en": "A calm, neutral expression without smiling.",
+        "ja": "笑わない、落ち着いた無表情。"
+      }
+    },
+    {
+      "id": "expression.serious",
+      "category": "expression",
+      "label": "真剣",
+      "text": { "en": "A serious, concentrated expression.", "ja": "真剣で集中した表情。" }
+    },
+    {
+      "id": "expression.absorbed",
+      "category": "expression",
+      "label": "夢中",
+      "text": {
+        "en": "An absorbed, focused expression, as if fully engaged in what the character is doing.",
+        "ja": "していることに没頭しているような、夢中で集中した表情。"
+      }
+    },
+    {
+      "id": "expression.puzzled",
+      "category": "expression",
+      "label": "戸惑い",
+      "text": {
+        "en": "A slightly puzzled, uncertain expression.",
+        "ja": "少し戸惑った、迷っているような表情。"
+      }
+    },
+    {
+      "id": "expression.curious",
+      "category": "expression",
+      "label": "興味しんしん",
+      "text": {
+        "en": "A curious expression with slightly widened eyes.",
+        "ja": "目を少し見開いた、興味しんしんの表情。"
+      }
+    },
+    {
+      "id": "expression.surprised",
+      "category": "expression",
+      "label": "驚き（控えめ）",
+      "text": {
+        "en": "A mildly surprised expression, without exaggeration.",
+        "ja": "大げさにならない、少し驚いた表情。"
+      }
+    },
+    {
+      "id": "expression.sleepy",
+      "category": "expression",
+      "label": "眠そう",
+      "text": {
+        "en": "A sleepy, drowsy expression with heavy eyelids.",
+        "ja": "まぶたが重い、眠そうな表情。"
+      }
+    },
+    {
+      "id": "expression.content",
+      "category": "expression",
+      "label": "満足そう",
+      "text": { "en": "A calm, content expression.", "ja": "落ち着いた、満足そうな表情。" }
+    },
+
+    {
+      "id": "gaze.fingertips",
+      "category": "gaze",
+      "label": "指先を見下ろす",
+      "text": { "en": "Gaze down at the fingertips.", "ja": "指先を見下ろす。" }
+    },
+    {
+      "id": "gaze.forward",
+      "category": "gaze",
+      "label": "前を見る",
+      "text": {
+        "en": "Look straight ahead in the walking direction.",
+        "ja": "進む方向をまっすぐ見る。"
+      }
+    },
+    {
+      "id": "gaze.adult",
+      "category": "gaze",
+      "label": "大人を見上げる",
+      "text": {
+        "en": "Look up at the adult beside the character.",
+        "ja": "隣にいる大人を見上げる。"
+      },
+      "tags": ["contact"]
+    },
+    {
+      "id": "gaze.object",
+      "category": "gaze",
+      "label": "手元の物を見る",
+      "text": {
+        "en": "Look at the object in the character's hands.",
+        "ja": "手に持っている物を見る。"
+      }
+    },
+    {
+      "id": "gaze.far",
+      "category": "gaze",
+      "label": "遠くを見る",
+      "text": { "en": "Look into the distance.", "ja": "遠くを見る。" }
+    },
+    {
+      "id": "gaze.ground",
+      "category": "gaze",
+      "label": "足もとを見る",
+      "text": { "en": "Look down at the ground near the feet.", "ja": "足もとの地面を見る。" }
+    },
+    {
+      "id": "gaze.no-camera",
+      "category": "gaze",
+      "label": "カメラを見ない",
+      "text": { "en": "Do not look into the camera.", "ja": "カメラを見ない。" }
+    },
+
+    {
+      "id": "eyes.relaxed",
+      "category": "eyes",
+      "label": "リラックスした目元",
+      "text": {
+        "en": "Relaxed eyes with natural blinking.",
+        "ja": "リラックスした目元で、自然にまばたきする。"
+      }
+    },
+    {
+      "id": "eyes.wide",
+      "category": "eyes",
+      "label": "目を少し見開く",
+      "text": { "en": "Eyes slightly wider open than usual.", "ja": "いつもより少し目を見開く。" }
+    },
+    {
+      "id": "eyes.narrow-smile",
+      "category": "eyes",
+      "label": "笑って目が細くなる",
+      "text": {
+        "en": "Eyes gently narrowing with the smile.",
+        "ja": "笑顔に合わせて目がやさしく細くなる。"
+      }
+    },
+    {
+      "id": "eyes.half-closed",
+      "category": "eyes",
+      "label": "半分閉じた目",
+      "text": { "en": "Half-closed, drowsy eyes.", "ja": "半分閉じた、眠そうな目。" }
+    },
+    {
+      "id": "eyes.few-blinks",
+      "category": "eyes",
+      "label": "まばたき少なめ",
+      "text": {
+        "en": "Blink only occasionally and naturally.",
+        "ja": "まばたきはときどき、自然に。"
+      }
+    },
+
+    {
+      "id": "brows.relaxed",
+      "category": "brows",
+      "label": "力の抜けた眉",
+      "text": { "en": "Relaxed eyebrows.", "ja": "力の抜けた眉。" }
+    },
+    {
+      "id": "brows.raised",
+      "category": "brows",
+      "label": "眉を少し上げる",
+      "text": { "en": "Eyebrows slightly raised.", "ja": "眉を少し上げる。" }
+    },
+    {
+      "id": "brows.furrowed",
+      "category": "brows",
+      "label": "眉を少し寄せる",
+      "text": {
+        "en": "Eyebrows slightly drawn together in concentration.",
+        "ja": "集中して、眉を少し寄せる。"
+      }
+    },
+
+    {
+      "id": "mouth.slightly-open",
+      "category": "mouth",
+      "label": "少し開く",
+      "text": {
+        "en": "Lips slightly parted, without speaking or lip-syncing.",
+        "ja": "口を少し開ける。話したり口パクしたりしない。"
+      }
+    },
+    {
+      "id": "mouth.closed",
+      "category": "mouth",
+      "label": "閉じている",
+      "text": { "en": "Mouth gently closed.", "ja": "口をやさしく閉じている。" }
+    },
+    {
+      "id": "mouth.corners-up",
+      "category": "mouth",
+      "label": "口角を少し上げる",
+      "text": { "en": "The corners of the mouth slightly raised.", "ja": "口角を少し上げる。" }
+    },
+    {
+      "id": "mouth.pout",
+      "category": "mouth",
+      "label": "口をとがらせる",
+      "text": { "en": "Lips slightly pouted.", "ja": "口を少しとがらせる。" }
+    },
+    {
+      "id": "mouth.open-wonder",
+      "category": "mouth",
+      "label": "「わあ」と開く",
+      "text": {
+        "en": "Mouth open in a small 'o' of wonder, without making sounds.",
+        "ja": "声は出さずに、「わあ」と小さく口を開ける。"
+      }
+    },
+
+    {
+      "id": "head.tilt-down",
+      "category": "head",
+      "label": "少しうつむく",
+      "text": { "en": "Head tilted slightly downward.", "ja": "頭を少し下に傾ける。" }
+    },
+    {
+      "id": "head.tilt-side",
+      "category": "head",
+      "label": "首をかしげる",
+      "text": { "en": "Head tilted slightly to one side.", "ja": "首を少しかしげる。" }
+    },
+    {
+      "id": "head.turn-toward-adult",
+      "category": "head",
+      "label": "大人の方を向く",
+      "text": { "en": "Turn the head toward the adult.", "ja": "大人の方へ顔を向ける。" },
+      "tags": ["contact"]
+    },
+    {
+      "id": "head.follow-reference",
+      "category": "head",
+      "label": "頭の動きは参照どおり",
+      "text": {
+        "en": "Follow the reference video's head movements closely.",
+        "ja": "頭の動きは参照動画に忠実に合わせる。"
+      }
+    },
+
+    {
+      "id": "location.seaside-ledge",
+      "category": "location",
+      "label": "海沿いのコンクリートの縁",
+      "text": {
+        "en": "A concrete ledge along the sea, with the ocean, distant mountains, and sky in the background.",
+        "ja": "海沿いのコンクリートの縁。背景に海、遠くの山、空。"
+      }
+    },
+    {
+      "id": "location.park",
+      "category": "location",
+      "label": "公園",
+      "text": { "en": "A park with green grass and trees.", "ja": "緑の芝生と木のある公園。" }
+    },
+    {
+      "id": "location.playground",
+      "category": "location",
+      "label": "遊具のある広場",
+      "text": {
+        "en": "A playground with simple play equipment.",
+        "ja": "シンプルな遊具のある広場。"
+      }
+    },
+    {
+      "id": "location.living-room",
+      "category": "location",
+      "label": "リビング",
+      "text": { "en": "A bright, tidy living room at home.", "ja": "明るく片付いた家のリビング。" }
+    },
+    {
+      "id": "location.beach",
+      "category": "location",
+      "label": "砂浜",
+      "text": { "en": "A sandy beach with gentle waves.", "ja": "おだやかな波の砂浜。" }
+    },
+    {
+      "id": "location.path",
+      "category": "location",
+      "label": "散歩道",
+      "text": { "en": "A quiet walking path lined with plants.", "ja": "植物が並ぶ静かな散歩道。" }
+    },
+    {
+      "id": "location.plain",
+      "category": "location",
+      "label": "シンプルな背景",
+      "text": { "en": "A simple, uncluttered background.", "ja": "物の少ないシンプルな背景。" }
+    },
+
+    {
+      "id": "lighting.daylight",
+      "category": "lighting",
+      "label": "自然光",
+      "text": { "en": "Soft natural daylight.", "ja": "やわらかい自然光。" }
+    },
+    {
+      "id": "lighting.sunset",
+      "category": "lighting",
+      "label": "夕方の光",
+      "text": { "en": "Warm late-afternoon sunlight.", "ja": "暖かい夕方の日差し。" }
+    },
+    {
+      "id": "lighting.overcast",
+      "category": "lighting",
+      "label": "くもりの日",
+      "text": {
+        "en": "Soft, even light on an overcast day.",
+        "ja": "くもりの日の、やわらかく均一な光。"
+      }
+    },
+    {
+      "id": "lighting.indoor",
+      "category": "lighting",
+      "label": "室内の明るい光",
+      "text": { "en": "Bright, soft indoor lighting.", "ja": "明るくやわらかい室内の光。" }
+    },
+    {
+      "id": "lighting.window",
+      "category": "lighting",
+      "label": "窓からの光",
+      "text": { "en": "Soft light coming in from a window.", "ja": "窓から差し込むやわらかい光。" }
+    },
+
+    {
+      "id": "props.ball",
+      "category": "props",
+      "label": "ボール",
+      "text": { "en": "A small ball.", "ja": "小さなボール。" }
+    },
+    {
+      "id": "props.leaf",
+      "category": "props",
+      "label": "葉っぱ",
+      "text": { "en": "A leaf held in the hand.", "ja": "手に持った葉っぱ。" }
+    },
+    {
+      "id": "props.shell",
+      "category": "props",
+      "label": "貝がら",
+      "text": { "en": "A small seashell.", "ja": "小さな貝がら。" }
+    },
+    {
+      "id": "props.toy-dinosaur",
+      "category": "props",
+      "label": "恐竜のおもちゃ",
+      "text": { "en": "A small toy dinosaur.", "ja": "小さな恐竜のおもちゃ。" }
+    },
+    {
+      "id": "props.picture-book",
+      "category": "props",
+      "label": "絵本",
+      "text": { "en": "A picture book.", "ja": "絵本。" }
+    },
+
+    {
+      "id": "camera.full-body",
+      "category": "camera",
+      "label": "全身・縦長",
+      "text": {
+        "en": "Vertical 9:16 framing with the character's full body in view.",
+        "ja": "縦長の9:16で、キャラの全身が画面に入る。"
+      }
+    },
+    {
+      "id": "camera.waist-up",
+      "category": "camera",
+      "label": "腰から上・縦長",
+      "text": {
+        "en": "Vertical 9:16 framing from the waist up.",
+        "ja": "縦長の9:16で、腰から上を映す。"
+      }
+    },
+    {
+      "id": "camera.close-hands",
+      "category": "camera",
+      "label": "手元のアップ",
+      "text": {
+        "en": "Vertical 9:16 close-up framing of the hands.",
+        "ja": "縦長の9:16で、手元をアップで映す。"
+      }
+    },
+    {
+      "id": "camera.static",
+      "category": "camera",
+      "label": "カメラ固定",
+      "text": {
+        "en": "Keep the camera steady with no zoom or sudden movement.",
+        "ja": "カメラは固定し、ズームや急な動きをしない。"
+      }
+    },
+    {
+      "id": "camera.slow-follow",
+      "category": "camera",
+      "label": "ゆっくり追う",
+      "text": {
+        "en": "The camera follows the character slowly and smoothly.",
+        "ja": "カメラはキャラをゆっくりなめらかに追う。"
+      }
+    },
+    {
+      "id": "camera.eye-level",
+      "category": "camera",
+      "label": "子どもの目線の高さ",
+      "text": { "en": "Camera at the character's eye level.", "ja": "カメラはキャラの目線の高さ。" }
+    },
+
+    {
+      "id": "avoid.extra-people",
+      "category": "avoid",
+      "label": "ほかの人物を増やさない",
+      "text": {
+        "en": "Do not add any people who are not in the reference video.",
+        "ja": "参照動画にいない人物を追加しない。"
+      }
+    },
+    {
+      "id": "avoid.text",
+      "category": "avoid",
+      "label": "文字を入れない",
+      "text": {
+        "en": "Do not add any text, captions, or logos.",
+        "ja": "文字、字幕、ロゴを入れない。"
+      }
+    },
+    {
+      "id": "avoid.outfit-change",
+      "category": "avoid",
+      "label": "服を変えない",
+      "text": {
+        "en": "Do not change the outfit or its colors at any point.",
+        "ja": "途中で服やその色を変えない。"
+      }
+    },
+    {
+      "id": "avoid.fast-motion",
+      "category": "avoid",
+      "label": "動きを速くしない",
+      "text": {
+        "en": "Do not speed up the movements beyond the reference video.",
+        "ja": "参照動画より動きを速くしない。"
+      }
+    },
+    {
+      "id": "avoid.background-change",
+      "category": "avoid",
+      "label": "背景を変えない",
+      "text": {
+        "en": "Do not change the background during the video.",
+        "ja": "動画の途中で背景を変えない。"
+      }
+    }
+  ]
+}
