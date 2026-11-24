@@ -24,9 +24,11 @@ Nov 23, 2026 · @ゆうき
 | Q4 | 保存方式 | JSONファイル／SQLite | JSONファイル。Reel Editorと同じ仕組みを使い回す |
 | Q5 | 保存先 | ドキュメント／ユーザーフォルダ直下 | `C:\Users\<名前>\AYA 3D Motion Studio`。Reel Editorで判明したとおり、OneDriveの中は動画の保存・移動に向かない |
 | Q6 | Klingへの導線 | ブラウザを開く＋コピー／サイト自動操作 | ブラウザでKlingを開く＋プロンプトをコピー＋添付する2ファイルをエクスプローラーで示す。自動操作は規約と安定性の両面でしない |
-| Q7 | Klingのプロンプト文字数上限 | — | 不明（要確認）。設定値にして、超えたら警告だけ出す |
+| Q7 | Klingのプロンプト文字数上限 | — | Motion Controlは2,500文字まで（利用者確認済み）。設定値の初期値を2,500にし、超えたらS5で赤く警告、S7の「コピーしてKlingを開く」を押せなくする |
 | Q8 | 加工前の実写動画を段階1で取り込むか | 取り込む／取り込まない | **取り込まない**。段階1で登録できる参照動画は、CapCut等で加工済みのものだけ。原本の管理は段階2で、別フォルダに分けて始める |
 | Q9 | 配布方式 | インストーラー／開発用起動のみ | 段階1は `npm run dev` での利用。インストーラーは段階3の終わりに検討 |
+
+**Q10（2026-11-23 追加）ayaとruiが一緒に映るショットの扱い**: Klingの Motion Control がキャラ画像を2枚以上受け付けるかは不明（要確認）。仮決め：1ショットに出演者を2人まで登録でき、両方の外見と衣装をプロンプトに入れる。添付するキャラ画像は1枚で、先頭（主役）のキャラの画像から選ぶ。2人が一緒に写った画像を主役のキャラ画像として登録しておけば、それを添付できる。Klingが複数画像に対応していれば、段階3で「2枚添付」に広げる。
 
 ### 役割分担
 
@@ -45,7 +47,7 @@ Nov 23, 2026 · @ゆうき
 
 | 用語 | 意味 |
 | --- | --- |
-| キャラ | 3D版のrui。外見の設定、衣装、キャラ画像（Klingに渡す静止画）を持つ |
+| キャラ | 3Dキャラ（rui・aya など、複数登録できる）。プロンプトでは名前の代わりに「呼び方」（例: the child／the woman）を使う。外見の設定、衣装、キャラ画像（Klingに渡す静止画）を持つ |
 | 固定プロンプト | 毎回必ず入れる文。英語と日本語訳のペア。版を管理する |
 | 制作 | 1本のリール。複数のショットを持つ |
 | ショット | Kling 1回ぶんの生成。場面別の指定と素材と結果を持つ |
@@ -101,7 +103,7 @@ Nov 23, 2026 · @ゆうき
 ┌──────────────────────────────────────────────────────────────────┐
 │ 海辺のお散歩 > ショット2「縁を歩き、指先を動かす」   [素材][Klingへ渡す →] │
 ├────────────────────────────────┬─────────────────────────────────┤
-│ キャラ [rui ▼] 衣装 [恐竜柄＋デニム ▼]  │ 完成プロンプト（英語）  812 / 上限 ? 文字 │
+│ キャラ [rui ▼] 衣装 [グレー恐竜ワンポイント▼]  │ 完成プロンプト（英語）  1851 / 2500 文字 │
 │ 靴 [黒いスニーカー ▼]              │ ┌───────────────────────────────┐ │
 │                                  │ │ Use the 3D character image...  │ │
 │ ▼ 動作                           │ │ Reproduce the free hand's ...  │ │
@@ -128,7 +130,7 @@ Nov 23, 2026 · @ゆうき
 - **S3 固定プロンプト**: ブロック単位で英日を並べて編集。「この版で保存」で版数が上がり、右に版の履歴（日時・変更メモ）。過去の版は読み取り専用で表示できる
 - **S4 制作**: ショットをカードで縦に並べる。カードにはタイトル、状態（下書き／Klingに渡した／採用あり）、参照動画と採用動画のサムネイル。ドラッグで並べ替え、複製できる（複製時は素材と結果を引き継がない）
 - **S6 素材と生成結果**: 左に参照動画（1本）、右に生成動画の一覧。参照動画を登録するときは「顔をぼかした加工済みの動画ですか？」の確認を必ず通す。生成動画ごとに評価・メモ・消費クレジットを入力し、「使ったプロンプトを表示」で当時の全文を見られる
-- **S7 Klingへ渡す**: チェックリスト（第7章）にすべてチェックするまで「コピーしてKlingを開く」を押せない。押すと①英語プロンプトをコピー ②既定ブラウザでKlingを開く ③参照動画とキャラ画像を入れた「送信用フォルダ」をエクスプローラーで開く。この時点のプロンプト全文を「渡した記録」として保存する
+- **S7 Klingへ渡す**: チェックリスト（第7章）にすべてチェックし、英文が2,500文字以内になるまで「コピーしてKlingを開く」を押せない。押すと①英語プロンプトをコピー ②既定ブラウザでKlingを開く ③参照動画とキャラ画像を入れた「送信用フォルダ」をエクスプローラーで開く。この時点のプロンプト全文を「渡した記録」として保存する
 
 ## 4. データモデルと保存形式
 
@@ -165,6 +167,8 @@ type Bilingual = { en: string; ja: string }
 
 interface Character {
   schemaVersion: 1; id: Id; name: string; locked: boolean; revision: number
+  promptLabel: Bilingual                           // プロンプトでの呼び方（例: { en: 'the child', ja: '子ども' }）
+  promptSummary: Bilingual                         // プロンプトに入る短い外見（英語250文字まで）
   appearance: { style: Bilingual; face: Bilingual; hair: Bilingual; body: Bilingual; notes: Bilingual }
   outfits: { id: Id; name: string; top: Bilingual; bottom: Bilingual; shoes: Bilingual; isDefault: boolean }[]
   images: { id: Id; file: string; note: string; isPrimary: boolean; width: number; height: number }[]
@@ -193,7 +197,8 @@ interface Production {
 
 interface Shot {
   id: Id; title: string
-  characterId?: Id; characterImageId?: Id; outfitId?: Id; shoesOverride?: Bilingual
+  cast: { characterId: Id; outfitId?: Id; shoesOverride?: Bilingual }[]   // 1〜2人。先頭がキャラ画像の主役
+  characterImageId?: Id                            // Klingに添付する画像（先頭キャラの画像から選ぶ）
   selections: Record<PhraseCategory, string[]>      // 選んだ Phrase.id（順序どおり）
   extra: Partial<Record<'motion' | 'expression' | 'face' | 'scene', string>>  // 英語の自由追記
   timeline: { at: 'start' | 'middle' | 'end' | 'custom'; atText?: string; change: Bilingual }[]
@@ -229,7 +234,7 @@ interface VideoAsset {
 ### 5.1 組み立ての順番
 
 1. 固定プロンプト（F1〜F4）
-2. キャラの衣装（衣装＋靴の差し替え）
+2. キャラ（出演者ごとに1段落、1ショット最大2人）。「Character (呼び方): 」のあとにプロンプト用の短い外見（promptSummary。詳しい外見の項目はプロンプトに入れない）、続けて「Outfit: 」のあとにトップス・ボトムス・靴（差し替えがあればそちら）。各文は入力されたまま空白1つでつなぐ（大文字小文字や句読点は変えない。空の項目は飛ばす）
 3. シーン（場所・照明・小物・画角）
 4. 動作（動作・手と指＋英語の追記）
 5. 表情と顔（表情・視線・目・眉・口・頭の向き＋英語の追記）
@@ -242,11 +247,11 @@ interface VideoAsset {
 
 | ブロック | 英語（Klingに入る文） | 日本語訳 |
 | --- | --- | --- |
-| F1 素材の役割 | Use the provided 3D character image as the primary reference for the character's face, body proportions, and outfit. Use the reference video only as a guide for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers. | 3Dキャラ画像を、顔・体の比率・服装の主な参照にする。参照動画は、姿勢・歩き方・体の動き・重心移動と、頭・腕・手首・指の動きの参考にだけ使う。 |
-| F2 ぼかし | The face in the reference video is intentionally blurred for privacy. Do not reproduce the blur, smudging, or any distortion on the character's face; render a clear, detailed face that matches the character image. | 参照動画の顔はプライバシーのため意図的にぼかしている。ぼかしやにじみ、歪みをキャラの顔に再現しない。キャラ画像と同じ、はっきりした顔を描く。 |
-| F3 外見の維持 | Keep the character consistent throughout: a semi-realistic 3D doll (about 65% realistic and 35% collectible figure) with the same facial features, natural double eyelids, short dark hair, and a stable head-to-body ratio and body proportions. | 最初から最後まで同じキャラを保つ。実写65％・フィギュア35％程度のセミリアル3Dドールで、同じ顔立ち、自然な二重まぶた、短い暗色の髪、安定した頭身と体の比率。 |
-| F4 人体 | Maintain natural human anatomy: exactly five fingers on each hand, no extra or missing fingers, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit. | 自然な人体構造を保つ。各手の指は5本ちょうど。指の過不足、手足の変形、不自然な関節、顔や服装の突然の変化を起こさない。 |
-| F5 避けること | Avoid unnecessary lip movement or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements. | 不要な口パクや発話、大げさな笑顔、不自然なまばたき、カメラの急な動きを避ける。 |
+| F1 素材の役割 | Use the 3D character image as the main reference for the face, body proportions, and outfit. Use the reference video only for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers. | 3Dキャラ画像を、顔・体の比率・服装の主な参照にする。参照動画は、姿勢・歩き方・体の動き・重心移動と、頭・腕・手首・指の動きの参考にだけ使う。 |
+| F2 ぼかし | The face in the reference video is blurred for privacy; do not reproduce the blur on the character's face. Render a clear face that matches the character image. | 参照動画の顔はプライバシーのためぼかしている。ぼかしをキャラの顔に再現しない。キャラ画像と同じ、はっきりした顔を描く。 |
+| F3 外見の維持 | Keep every character consistent with the character image: the same face, hairstyle, hair color, skin tone, and body proportions. | どのキャラもキャラ画像と同じ見た目を保つ。顔、髪型、髪の色、肌の色、体の比率を変えない。 |
+| F4 人体 | Maintain natural anatomy: exactly five fingers on each hand, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit. | 自然な人体を保つ。各手の指は5本ちょうど。手足の変形や不自然な関節、顔や服装の突然の変化を起こさない。 |
+| F5 避けること | Avoid lip-syncing or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements. | 口パクや発話、大げさな笑顔、不自然なまばたき、カメラの急な動きを避ける。 |
 
 この5ブロックを初期値（版数 1）として同梱する。英文は実際にKlingで数回試してから確定する（未検証）。
 
@@ -271,9 +276,9 @@ interface VideoAsset {
 ### 5.4 海辺の実例（完成プロンプト）
 
 ```text
-Use the provided 3D character image as the primary reference for the character's face, body proportions, and outfit. Use the reference video only as a guide for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers. The face in the reference video is intentionally blurred for privacy. Do not reproduce the blur, smudging, or any distortion on the character's face; render a clear, detailed face that matches the character image. Keep the character consistent throughout: a semi-realistic 3D doll (about 65% realistic and 35% collectible figure) with the same facial features, natural double eyelids, short dark hair, and a stable head-to-body ratio and body proportions. Maintain natural human anatomy: exactly five fingers on each hand, no extra or missing fingers, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit.
+Use the 3D character image as the main reference for the face, body proportions, and outfit. Use the reference video only for posture, gait, body movement, weight shifts, and the motion of the head, arms, wrists, and fingers. The face in the reference video is blurred for privacy; do not reproduce the blur on the character's face. Render a clear face that matches the character image. Keep every character consistent with the character image: the same face, hairstyle, hair color, skin tone, and body proportions. Maintain natural anatomy: exactly five fingers on each hand, no deformed limbs or unnatural joints, and no sudden changes to the face or outfit.
 
-Outfit: a white long-sleeve top with a small, colorful dinosaur print, light blue denim pants, and black sneakers.
+Character (the child): A semi-realistic 3D doll-like boy, about 4 to 5 years old and about 5 heads tall, with a round face, rosy cheeks, large dark brown eyes with double eyelids, and short, slightly spiky dark brown hair. Outfit: A heather-gray sweatshirt with a small black T-rex on the left chest. Blue denim jogger pants. Black hook-and-loop sneakers with white soles.
 
 Scene: A concrete ledge along the sea, with the ocean, distant mountains, and sky in the background. Soft natural daylight. Vertical 9:16 framing with the character's full body in view.
 
@@ -281,8 +286,10 @@ Motion: Walk carefully along a narrow ledge, closely following the reference vid
 
 Expression and face: A soft, subtle smile; do not laugh or grin widely. Gaze down at the fingertips. Relaxed eyes with natural blinking. Lips slightly parted, without speaking or lip-syncing.
 
-Avoid: Avoid unnecessary lip movement or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements.
+Avoid: Avoid lip-syncing or talking, exaggerated smiles, unnatural blinking, and abrupt camera movements.
 ```
+
+文字数は **1,851文字**。ayaを二人目の出演者に加えると **2,163文字**で、どちらもMotion Controlの上限2,500文字に収まる（時間変化や追記に使える余白は約340〜650文字）。
 
 このショットでは「大人と手をつなぐ」（contact）を選んでいるので、S5とS7に「キャラ画像に大人の手がないと、手の接触が崩れることがあります」と注意を出す。
 
@@ -332,7 +339,7 @@ AYA Reel Editorと同じ構成（Electron ＋ React ＋ TypeScript ＋ electron-
 | 参照動画の登録 | 「顔をぼかした加工済みの動画ですか？」に「はい、加工済みです」を選ばないと登録できない。確認日時を processedConfirmedAt に残す |
 | 送信前チェック（S7） | 次の項目をすべてチェックするまで「コピーしてKlingを開く」を押せない |
 | 送るファイル | outgoing フォルダには、そのショットの参照動画とキャラ画像の2つだけ。毎回空にしてから作る |
-| プロンプト | 実名や学校名などを入れないよう、キャラ名はプロンプトに入れない（「the character」と書く） |
+| プロンプト | 実名や学校名などを入れないよう、キャラ名はプロンプトに入れない（キャラごとの「呼び方」 the child／the woman などを使う） |
 | 外部通信 | アプリ自身はネットに接続しない。翻訳もアプリからはしない |
 | 削除 | 自動削除はしない。削除はすべてアプリ内のゴミ箱への移動 |
 | 保存先 | OneDriveなどのクラウド同期フォルダの中だと警告する（同期で実写素材がクラウドに上がるため） |
@@ -392,7 +399,7 @@ AYA Reel Editorと同じ構成（Electron ＋ React ＋ TypeScript ＋ electron-
 | --- | --- | --- | --- |
 | 1-0 土台 | フォルダとリポジトリ、Reel Editorの土台・保存部品の持ち込み、不要な機能の削除、空のホーム | Claude（ファイルのコピー）→ 利用者（GitHubリポジトリと最初のコミット）→ Codex（整理とテスト） | アプリが起動し、U-01が通る |
 | 1-1 キャラと固定プロンプト | S2・S3、部品辞書の読み込みと編集 | Claude（固定プロンプト初版と部品辞書のJSON）→ Codex（実装） | A-01・A-02、U-06 |
-| 1-2 制作とショット編集 | S1・S4・S5、buildKlingPrompt、注意表示 | Codex | A-03、U-02〜U-05、E-01 |
+| 1-2 制作とショット編集 | S1・S4・S5、buildKlingPrompt、注意表示、キャラの呼び方（promptLabel）と1ショット2人までの出演（cast）、固定プロンプトF3の初期値を新しい文に更新 | Codex | A-03、U-02〜U-05、E-01 |
 | 1-3 素材とKlingへの受け渡し | S6・S7、動画の取り込みと再生、送信用フォルダ、渡した記録、生成結果の記録 | Codex | A-04〜A-06、U-07〜U-10 |
 | 1-4 仕上げ | 文言の整理、README、初回の使い方の案内 | Claude（小さな修正は直接） | A-07、段階1の受け入れ基準 |
 
@@ -474,3 +481,52 @@ AYA 3D Motion Studio の「ステップ<1-N> <名前>」を実装してくださ
 
 - プロンプト全文やキャラの設定は含めない（Reel Editorでは不要。含めるなら利用者が選んだときだけ）
 - Reel Editor側では、このJSONを読んで「シーンの素材に動画を使う」機能が必要になる。Reel Editorは今のところ静止画のシーンだけを扱う設計なので、動画シーンの対応は双方の段階が進んだ後に設計する（未確定）
+
+## 付録. キャラ登録の例（2026-11-23 版のキャラクターシートより）
+
+新しいキャラクターシート（rui：グレーのトレーナー＋恐竜ワンポイント／aya：クリームのリブニット＋ワイドデニム）を基準にする。引き継ぎ資料の「白地に恐竜柄のトップス」は使わない。
+
+### rui
+
+| 項目 | 英語 | 日本語 |
+| --- | --- | --- |
+| 呼び方 | the child | 子ども |
+| 画風・質感 | A semi-realistic 3D doll-like character, about 65% realistic and 35% collectible figure, with soft, smooth skin and gentle, natural shading. | 実写65％・フィギュア35％程度の、セミリアルな3Dドール風のキャラ。肌はやわらかくなめらかで、陰影は自然でやさしい。 |
+| 顔 | A round face with full, rosy cheeks, large dark brown eyes with natural double eyelids, a small rounded nose, and small ears. | 丸い顔に、ふっくらしたほんのり赤い頰。自然な二重まぶたの、大きな焦げ茶色の目。小さく丸い鼻と小さな耳。 |
+| 髪 | Short dark brown hair with a slightly spiky, textured top, and the sides and back cut short and tapered at the neck. | 短い焦げ茶色の髪。頭頂部は少しツンツンした毛流れで、サイドと後ろは短く、襟足に向かって短く刈り上げている。 |
+| 体格 | A small young child, about 4 to 5 years old in appearance, about 5 heads tall, with short arms and legs and a soft, slightly chubby build. | 4〜5歳くらいに見える小さな子ども。約5頭身で、腕と脚は短め、やわらかく少しふっくらした体型。 |
+| 補足 | When smiling, the eyes narrow into gentle crescents and the upper teeth show. Keep the same face shape, eye shape, and hairstyle in every shot. | 笑うと目がやさしい三日月形に細くなり、上の歯が見える。どのショットでも、顔の形・目の形・髪型を変えない。 |
+| 衣装1 トップス | A light heather-gray crewneck sweatshirt with a small black T-rex embroidered on the left chest, with ribbed cuffs and hem. | 杢グレーのクルーネックのトレーナー。左胸に小さな黒いティラノサウルスの刺しゅう。袖口と裾はリブ。 |
+| 衣装1 ボトムス | Medium-blue denim jogger pants with an elastic waist and elastic ankle cuffs, in a slightly loose fit. | 中間色のブルーのデニムのジョガーパンツ。ウエストと足首がゴムで、少しゆったりしたシルエット。 |
+| 衣装1 靴 | Black hook-and-loop sneakers with white soles and a white side stripe, worn with white socks. | 白い靴底と白いサイドラインが入った、黒いマジックテープのスニーカー。白い靴下をはいている。 |
+
+### aya
+
+| 項目 | 英語 | 日本語 |
+| --- | --- | --- |
+| 呼び方 | the woman | 女性 |
+| 画風・質感 | A semi-realistic 3D doll-like character, about 65% realistic and 35% collectible figure, with soft, smooth skin and gentle, natural shading. | 実写65％・フィギュア35％程度の、セミリアルな3Dドール風のキャラ。肌はやわらかくなめらかで、陰影は自然でやさしい。 |
+| 顔 | An oval face with a warm, gentle look, almond-shaped dark brown eyes with natural double eyelids, softly arched eyebrows, a small nose, and natural pink lips. | やさしく温かい印象の、卵型の顔。自然な二重まぶたのアーモンド形の焦げ茶色の目、ゆるやかなアーチの眉、小さめの鼻、自然なピンクの唇。 |
+| 髪 | Long, wavy brown hair with lighter caramel highlights, tied in a loose ponytail, with soft face-framing strands and see-through bangs. | 明るいキャラメル色のハイライトが入った、ウェーブのある長い茶色の髪。ゆるめのポニーテールで、顔まわりにやわらかな後れ毛とシースルー前髪。 |
+| 体格 | A slender adult woman, around her early 30s in appearance, with a natural, balanced build and about 7 heads tall. | 30代前半くらいに見える、ほっそりした大人の女性。自然でバランスのよい体型で、約7頭身。 |
+| 補足 | Small pearl stud earrings in both ears. When smiling, her eyes narrow softly and her upper teeth show. Keep the same face, hairstyle, and hair color in every shot. | 両耳に小さなパールのピアス。笑うと目がやさしく細くなり、上の歯が見える。どのショットでも、顔・髪型・髪の色を変えない。 |
+| 衣装1 トップス | A cream-colored ribbed knit sweater with a mock neck and long sleeves, in a fitted silhouette. | クリーム色のリブニット。モックネックで長袖、体に沿うシルエット。 |
+| 衣装1 ボトムス | High-waisted, medium-blue wide-leg denim jeans that reach the floor. | ハイウエストの、中間色のブルーのワイドデニム。裾は床につくくらいの長さ。 |
+| 衣装1 靴 | White low-top sneakers. | 白いローカットのスニーカー。 |
+
+上の表はキャラの詳しい記録用（外見の各項目）。**プロンプトには入らない**。Motion Controlの上限2,500文字に収めるため、プロンプトには下の「短い外見」と「短い衣装」を使う（見た目の細部はキャラ画像からKlingに伝わる）。アプリの衣装欄には短い版を入れる。
+
+### プロンプト用の短い版
+
+| 項目 | 英語 | 日本語 |
+| --- | --- | --- |
+| rui 短い外見 | A semi-realistic 3D doll-like boy, about 4 to 5 years old and about 5 heads tall, with a round face, rosy cheeks, large dark brown eyes with double eyelids, and short, slightly spiky dark brown hair. | 4〜5歳くらい・約5頭身の、セミリアルな3Dドール風の男の子。丸い顔、赤らんだ頰、二重まぶたの大きな焦げ茶色の目、少しツンツンした短い焦げ茶色の髪。 |
+| rui 衣装1 トップス | A heather-gray sweatshirt with a small black T-rex on the left chest. | 左胸に小さな黒いティラノサウルスがある、杢グレーのトレーナー。 |
+| rui 衣装1 ボトムス | Blue denim jogger pants. | ブルーのデニムのジョガーパンツ。 |
+| rui 衣装1 靴 | Black hook-and-loop sneakers with white soles. | 靴底が白い、黒いマジックテープのスニーカー。 |
+| aya 短い外見 | A semi-realistic 3D doll-like woman in her early 30s, slender, with an oval face, almond-shaped dark brown eyes, and long wavy brown hair with caramel highlights in a loose ponytail. | 30代前半の、セミリアルな3Dドール風のほっそりした女性。卵型の顔、アーモンド形の焦げ茶色の目、キャラメル色のハイライトが入った長いウェーブの茶色の髪をゆるめのポニーテールにしている。 |
+| aya 衣装1 トップス | A cream-colored ribbed mock-neck knit sweater. | クリーム色のモックネックのリブニット。 |
+| aya 衣装1 ボトムス | High-waisted blue wide-leg jeans. | ハイウエストのブルーのワイドデニム。 |
+| aya 衣装1 靴 | White sneakers. | 白いスニーカー。 |
+
+文字数の目安（英語）: 固定プロンプトF1〜F4は660文字、ruiの段落は372文字、ayaの段落は310文字。
