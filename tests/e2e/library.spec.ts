@@ -46,7 +46,7 @@ test('キャラと固定プロンプトの第2版が再起動後も残る', asyn
     await page.getByRole('button', { name: /版 1/ }).click()
     await expect(page.getByLabel('素材の役割 英語', { exact: true })).not.toBeEditable()
     await expect(page.getByLabel('素材の役割 英語', { exact: true })).toHaveValue(
-      /primary reference/,
+      /main reference/,
     )
   } finally {
     await restarted.close()
